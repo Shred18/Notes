@@ -1,0 +1,48 @@
+#Notes for seaborn software
+import seaborn as sns
+from matplotlib import pyplot as plt
+tips = sns.load_dataset('tips') #seaborn comes with a few built in datasets, tips being one of them
+flights = sns.load_dataset('flights')
+#tips.head()
+#ok = sns.distplot(tips['total_bill'],kde=False, bins=30) #gives you a histogram of where your total bill lies
+#bins will change the Y axis number
+
+##jointplot - allows you to combine 2 different distribution plots
+#sns.jointplot(x='total_bill',y='tip',data=tips)
+#can pass ,kind='hex' after tips to change the shapes to a hexagon on the main graph. Default is scatter
+#can pass ,kind='reg' to do a regression line
+
+##pairplot - plot pair y's relationship across an entire dataframe. Essentially does joint plot for every possible numerical comboination on the dataframe
+#sns.pairplot(tips,hue='sex')
+#use ,hue='sex' to categorize bases off non-numerical features
+#kde stands for kernal density estimation plots
+
+##Rugplot - just draws a dash point for every single point on the distribution line
+#sns.rugplot(tips['total_bill'])
+
+##to get only kde plot without bars
+#sns.kdeplot(tips['total_bill'])
+
+
+#-------------------CATEGORICAL PLOTS----------------------------------------------------
+#sns.barplot(x='sex',y='total_bill',data=tips)
+
+##countplot - used to count the number of times an occurance happened
+#sns.countplot(x='sex',data=tips) #only do x, no y
+
+##learn violin plot & boxplot on your own, i dont think they'll be of much use to you atm
+
+##strip plot
+#sns.stripplot(x='day',y='total_bill',data=tips,jitter=True) #jitter will make the points easier to read
+
+################################MATRIX FORM####################################
+#tc = tips.corr() #you do this to get variables on both the columns and rows. shows corrilation data
+#sns.heatmap(tc, annot=True) #creates heat map & colors in values based on some gradient scale
+#annot allows you to see the values in each cell
+#--pivottable--
+ok=flights.pivot_table(index='month',columns='year',values='passengers')
+#sns.heatmap(ok,cmap='magma',linecolor='white',linewidths=1)
+
+#--clustermap--
+sns.clustermap(ok) #places the most similar together, so its not necessarily in order. For instance,
+#the months with the most travel are placed together on the cluster map

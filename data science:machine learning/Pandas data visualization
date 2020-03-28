@@ -1,0 +1,27 @@
+#notes on data visualization using pandas
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
+df1 = pd.read_csv('countries.csv')
+
+#df1['population'].hist(bins=30) #makes a histogram - can edit bins. Histograms group numbers into ranges
+#the height of each bar shows how many fall into each range
+
+#df1['population'].plot(kind='hist') #method of creating a histogram off a dataframe plot
+#df1['population'].plot() #another method of creating a histogram off a dataframe plot - same as above
+
+
+#df1['population'].plot.area() #area plot
+#df1.ix[0:30].plot.area() #prints only to row 30
+
+#df1['population'].plot.bar(stacked=True)#bar plot
+
+#df1.plot.line(x='country',y='population') #lineplot
+
+#df1.plot.scatter(x='year',y='population')
+
+
+#df1.plot.hexbin(x='year',y='population',gridsize = 25) #hexbin plot
+
+#df1['population'].plot.density() #can do density or KDE (interchangable)

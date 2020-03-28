@@ -1,0 +1,21 @@
+
+
+class Dog():
+
+    def __init__(self,breed,spots): #breed and spots are attributes
+
+        self.breed = breed
+        self.spots = spots
+
+    # WHEN RUNNING IN CONSOLE TO CHECK, DO THE FOLLOWING
+    #1 my_dog = Dog('PUT BREED TYPE HERE', 'PUT SPOTS OR NO SPOTS HERE') (known as assigning btw)
+    #2 my_dog.breed
+    #3 This will return the breed type
+    #4 my_dog.spots
+    #5 This will return spots or no spots
+
+    def __str__(self):
+        return('This dog is a ', self.breed, 'and has ', self.spots)
+
+    #Do same as step one, and for step to replace .breed with .__str__ and it will return this string
+

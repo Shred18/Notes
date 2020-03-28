@@ -1,0 +1,36 @@
+#create a generator that generates squares of a number
+def gensquares(n):
+    for x in range(n):
+        yield x **2
+        #when checking solution, do: gensquares(some number), then for x in gensquares(some number): print(x)
+#SAME WAY OF DOING THIS
+
+
+
+def gensquares(n):
+    results = []
+    for x in range(n):
+        results.append(x**2)
+    return results
+        #no need to do the for statement to check, as this does it when you return the result
+
+
+#create a generator that yields "n" random numbers between a low and high number (that are inputs)
+
+import random
+#random.randomint(1,25)
+def rand_num(low,high,n):
+    for i in range(n):
+        yield random.randint(low,high)
+
+
+#use the iter() function to convert the string into an iter
+s = 'hello'
+s = itter(s)
+
+print(next(s))
+
+#Explain the case for a generating using a yield statement
+
+#IF THE OUTPUT HAS THE POTENTIAL OF TAKING UP LARGE AMOUNTS OF MEMORY SPACE & YOU ONLY INTEND TO ITERATE THROUGH IT
+#IN THIS CASE, YOU WOULD ONLY WANT TO USE A YIELD TO SAVE SPACE

@@ -1,0 +1,36 @@
+import plotly.plotly as py
+from plotly.offline import download_plotlyjs,init_notebook_mode,plot,iplot
+init_notebook_mode(connected=True)
+import plotly.graph_objs as geo
+import pandas as pd
+
+
+#data = dict(type = 'choropleth',
+       #    locations = ['AZ','CA','NY'],
+       #    locationmode = 'USA-states',
+        #   colorscale = 'Portland',
+        #   text = ['text 1','text 2', 'text 3'],
+        #   z = [1.0,2.0,3.0],
+        #   colorbar = {'title':'Colorbar Title Goes Here'})
+#layout = dict(geo={'scope':'usa'})
+#choromap = geo.Figure(data=[data],layout = layout)
+#plot(choromap) #doing plot instead of iplot will return the map in a browser window instead of in the console
+
+
+################FROM EXCEL SHEET#####################
+#(https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp/learn/lecture/5733390#questions))
+
+df = pd.read_csv('corona.csv') #not going to work because i cant get the file - use this for reference tho
+
+data = dict(type = 'choropleth',
+            locations = df['country'], #want to know the locations of countries with active cases
+            z = df['active'],#want to know number of active cases
+            text = df['tz'],
+            colorbar = {'title': 'Active case severity'})
+
+layout = dict(title = '2020 Coronavirus active cases',
+              geo = dict(showframe = False,
+              projection = {'type':'mercator'}))
+choromap3 = geo.Figure(data=[data], layout=layout)
+plot(choromap3)
+

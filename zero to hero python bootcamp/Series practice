@@ -1,0 +1,53 @@
+import numpy as np
+import pandas as pd
+from numpy.random import randn
+np.random.seed(101)#this will make sure you get the same random numbers
+df = pd.DataFrame(randn(5,4),['A','B','C','D','E'],['W','X','Y','Z']) #creating the actual dataframe. Wont be used as much, since you'll be reading imports from excel/CVS mostly
+df = df > 0 #this will return boolean values in the spots of all the numbers.
+df = df[df>0] #this will return the numbers that are greater than 0, and pul null for the ones that arent
+#GETTING COLUMNS
+column_w = df['W'] #will return only the W column. Can also chose multiple columns with df[['Z','W']]
+
+#GETTING ROWS
+rowa = df.loc['A']
+
+#getting both rows and columns
+k = df.loc[['A','B',],['W','Y']]
+
+
+
+############################
+#Index Levels
+outside = ['G1','G1','G1','G2','G2','G2',]
+inside = [1,2,3,1,2,3]
+hier_index = list(zip(outside,inside))
+hier_index = pd.MultiIndex.from_tuples(hier_index)
+
+tf = pd.DataFrame(randn(6,2),hier_index,['A','B']) #putting the data into a dataframe, seperating into 2 columns
+#and 6 rows
+tf.loc['G1']
+tf.index.names = ['Groups','Num'] #Adds namaes to the two columns
+tf.loc['G2'].loc[2]['B'] #this will get G2, Column B, Row 2
+
+#to drop columns with Null in it -  df.dropna(axis=1)
+#to drop rows with Null in it - df.dropna()
+#to keep a row, use df.dropna(thresh=# of values that arent NA in the row)
+#to fill in nulls, use df.fillna(value='FILL VALUE')
+
+
+########################
+#GROUOPBY
+#Groupby allows you to group together rows based off of a column value and perform an aggregate function on them
+
+
+#To group, use df.groupby('NAME'). This will return the object.
+#to get something, like the mean, for these groups, you set the above equal to a variable
+#and use that variable.mean() or whatever you're looking to calculate
+
+
+##############################
+#Concatinating Data Frames
+df1 = pd.DataFrame({'a':['A0','A1','A2']})
+df2 = pd.DataFrame({'b':['b0','b1','b2']})
+df3 = pd.DataFrame({'c':['c0','c1','c2']})
+pd.concat([df1,df2,df3]) #this will add all of the dataframes together. Make sure they're all the same dimensions when contatinating

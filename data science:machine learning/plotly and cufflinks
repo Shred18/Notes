@@ -1,0 +1,45 @@
+#notes on plotly and cufflinks
+#plotly and cufflinks allow for interactive visualizaiton
+
+#plotly is an interactive visualization library
+#cufflinsk connects plotly with pandas
+
+import pandas as pd
+import numpy as np
+from plotly import __version__
+import cufflinks as cf
+from plotly.offline import download_plotlyjs,init_notebook_mode,plot,iplot
+init_notebook_mode(connected=True)
+cf.go_offline()
+
+
+
+
+#DATA
+df = pd.DataFrame(np.random.randn(100,4),columns='A B C D'.split())
+df2 = pd.DataFrame({'Category':['A','B','C'],'Values' :[32,43,50]})
+df3 = pd.DataFrame({'x':[1,2,3,4,5],'y':[10,20,30,20,10],'z':[500,400,300,200,100]})
+#df.plot() #This is using matplotlib
+#df.iplot() #this is using ploty and cufflinks. It lets you scroll through and see the values
+
+
+#figure out why iplot isnt working for pycharm
+
+##plotting scatter with Iplot
+#df.iplot(kind='scatter',x='A',y='B',mode='markers',size=20)
+
+##barplot
+#df2.iplot(kind='bar',x='Category',y='Values')
+#df.sum().iplot(kind='bar') #These become more powerful when you call an aggregate function, such as sum
+#to the dataframe. Groupby is commonly used
+
+#df3.iplot(kind='surface') #this will print the 3d model
+#plotly.offline.plot(plot(df3), filename='file.html')
+
+##histogram
+#df['A'].iplot(kind='hist',bins=25 #can pass in entire dataframe to get overlapping histogram of all columns
+#can pass in ['A'],['B'] too
+
+#bubbleplot
+#df.iplot(kind='bubble',x='A',y='B',size='C')
+#size of points is based off column value C

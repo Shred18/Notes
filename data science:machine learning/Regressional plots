@@ -1,0 +1,10 @@
+import seaborn as sns
+tips = sns.load_dataset('tips')
+tips.head()
+
+#linear model plot
+sns.lmplot(x='total_bill',y='tip',data=tips) #gives you scatter plot with a linear fit ontop of it.
+# Can specify hue  by ,hue = 'sex'
+#can specify markers by ,markers=['o','v']
+#Can specify size of markers by ,scatter_kws={'s':100}
+#can split into two seperate columns by doing ,col='sex' (similr to hue, except splits into columns instead of changing colors

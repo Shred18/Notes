@@ -1,0 +1,68 @@
+from matplotlib import pyplot as plt
+import numpy as np
+x = np.linspace(0,5,11) #go from 0 to 5 and grab 11 points
+y = x ** 2
+#Simple plot
+#plt.plot(x,y)
+#plt.xlabel('Xlabel')
+#plt.ylabel('Ylabel')
+#plt.title('Title')
+#plt.show()
+#--------------------------------------------------------------------------------
+
+#TO DO SUBPLOT
+#plt.subplot(1,2,1) #rows, columns, plot number your refering to
+#plt.plot(x,y,'r')
+
+#plt.subplot(1,2,2)
+#plt.plot(y,x,'b')
+#--------------------------------------------------------------------------------
+#Object Oriented
+#fig = plt.figure()
+#axes = fig.add_axes([0.1,0.1,0.8,0.8]) #left, bottom, width, height
+#axes.plot(x,y)
+#fig.show()
+
+
+#fig = plt.figure()
+#axes1 = fig.add_axes([0.1,0.1,0.8,0.8])
+#axes2 = fig.add_axes([0.2,0.5,0.4,0.3])
+
+#axes1.plot(x,y)
+#axes1.set_title('BIGGER PLOT')
+
+#axes2.plot(y,x)
+#axes2.set_title("SMALLER PLOT")
+
+#TO ADJUST FIGURE SIZE
+#fig = plt.figure(figsize=(8,2))
+
+#ax = fig.add_axes([0,0,1,1])
+#ax.plot(x,y)
+
+#--------------------------------------------------------------------------------
+#SUBPLOTS FOR OOP
+fig,axes = plt.subplots(nrows=1, ncols=2) #you can specify the number of rows/columns in subplots
+plt.tight_layout() #fixes overlaps
+
+axes[0].plot(x,y) #allows you to plot on the first axes (you can iterate through them)
+axes[0].set_title('First Plot')
+
+#to add color to the plot, do ,color='blue' following the x in plot
+#to add line width, do ,lw = 3 (can adjust to whatever number
+#to add line style, do ,ls = '- -'
+#to add marker, do ,marker='o'
+#to adjust marker size, do ,markersize=10
+#to adjust marker color, do ,markerfacecolor='yellow'
+#to adjust marker width, do ,markeredgewidth=3
+#to adjust marker edge color, do markeredgecolor='green
+axes[1].plot(y,x) #allows you to plot on the second axes
+axes[1].set_title('Second Plot')
+
+#TO ADJUST SUBPLOT SIZE
+#fig,axes = plt.subplots(figsize=(8,2)) #this can be added to the end when specifying the number of rows/columns as well
+#axes.plot(x,y)
+
+
+#SAVING A FIGURE
+fig.savefig('my_picture.png')

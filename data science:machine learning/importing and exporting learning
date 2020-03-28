@@ -1,0 +1,23 @@
+
+
+import pandas as pd
+#EXCEL
+pd.read_csv('NAME OF FILE HERE') #Imports the file -
+                                # make sure the file is in the same folder as this script
+df = pd.read_csv('NAME OF FILE HERE') #sets it equal to a variable
+df.to_csv('NAME THE OUTPUT FILE HERE', index=False) #Exporting your file - index=false automatically signs range index to CVS. Usually necessary
+
+#HTML
+pd.read_html('http://www.fdic.gov/bank/individual/failed/banklist.html') #copy the url and past it in the ''
+data = pd.read_html('http://www.fdic.gov/bank/individual/failed/banklist.html')
+desired_width = 320
+pd.set_option('display.width',desired_width)
+pd.set_option('display.max_columns',40)
+pd.set_option('display.max_rows',600)
+print(data)
+
+#Sqlalchemy ----- figure out what this does, i have no idea
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///:memory')
+df.to_sql('my_table',engine)
+sqldf = pd.real_sql('my_table',con=engine)

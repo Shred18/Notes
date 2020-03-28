@@ -1,0 +1,42 @@
+
+#PROBLEM 1
+#If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+#Find the sum of all the multiples of 3 or 5 below 1000.
+
+def thousand():
+
+    num = 0
+    threes = 0
+    fives = 0
+    totalthree = 0
+    totalfive = 0
+    while num < 1000:
+        #print("ON NUMBER", num, "NUM OF 3'S", threes, "NUM OF 5'S", fives)
+        if num % 3 == 0:
+            print("YOU HIT 3", num)
+            threes += 3
+            num += 1
+        elif num % 5 == 0:
+            print("YOU HIT 5", num)
+            fives += 5
+            num += 1
+        else:
+            num += 1
+
+#ANOTHER WAY OF DOING IT
+def total(n):
+    result = []
+    for x in range(n):
+        if x % 3 == 0:
+            result.append(x)
+
+        elif x % 5 == 0:
+            result.append(x)
+        else:
+            continue
+    #return result
+    return sum(result)
+
+
+
+

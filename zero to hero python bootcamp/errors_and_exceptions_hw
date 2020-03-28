@@ -1,0 +1,51 @@
+#handle the exception thrown by the code using try and except blocks
+
+#for i in ["a","b","c"]:
+ #   print(i ** 2)
+
+def question_one():
+    try:
+        for i in ["a","b","c"]:
+            print(i ** 2)
+    except:
+        print("dude, thats not right")
+
+    else:
+        print("correct, thanks")
+
+#hand the exception thrown by the code, throw try and except blocks, and finally block saying "all done"
+#x = 5
+#y = 0
+#z = x/y
+def question_two():
+
+    try:
+        x = 5
+        y = 0
+        z = x/y
+        result = print("the difference between x and y is", z)
+    except:
+        print("these are strings dude, cant divide them")
+
+    else:
+        print("okay... so it worked")
+
+    finally:
+        print("look, this line will be here regardless")
+
+
+
+#write a function that asks for an integer and asks for the square of it. use while loop with
+#try, except, and else block to account for incorrect inputs
+
+def ask():
+
+    while True:
+        try:
+            #line to input an integer
+            n = int(input("Input integer " ))
+        except:
+            print("this is not an integer")
+        else:
+            print('The square of your number is', n ** 2)
+            break
